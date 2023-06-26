@@ -1,0 +1,220 @@
+var ac = "active";
+
+/* 상단 fixed header */
+$(window).on("load scroll", function() {  
+  if($("#wrap .popup").is(".popup")){
+    $popupHeight = $(".popup").height();
+		if($(window).scrollTop() > $popupHeight){
+      $("#header").addClass("fixed");
+    }else{
+        $("#header").removeClass("fixed")
+    }
+	}else{
+    if($(window).scrollTop() > 0){
+    	$("#header").addClass("fixed");
+    }else{
+    	$("#header").removeClass("fixed")
+    }
+  }
+  
+}); 
+$(window).scroll(function(){   
+  var goTop = $('.go-top');
+    var scrollTop = $(window).scrollTop();
+    scrollTop > 0 ? goTop.addClass(ac) : goTop.removeClass(ac);
+});
+
+// 	if($(window).width()<767){
+//     $('.sitemap-list > li:first').addClass('active');
+//     console.log('모바일사이즈일때');
+//     $('.menu-trigger').click(function(){
+//       $(this).toggleClass('active');
+//       $(this).next().toggleClass('active');
+//     });
+//
+//     $('.sitemap-list > li').click(function(){
+//       $(this).toggleClass('active').siblings().removeClass('active');
+//     });
+//     $('.menu-trigger').click(function(){
+//       console.log('버튼클릭시');
+//       $(this).toggleClass('active');
+//       $('.sitemap-wrap').addClass('active');
+//       if ($('.sitemap-wrap').hasClass('active')) {
+//         console.log('메뉴열렸을때');
+//         $('#wrap').css('position', 'fixed');
+//         $('.lang').addClass('mobile');
+//       }else{
+//         $('#wrap').css('position', 'relative');
+//         $('.lang').removeClass('mobile');
+//       }
+//     });
+//
+// 	}
+//
+// $(window).resize(function(){
+//   if ($(window).width()<767) {
+//     // $('.sitemap-list > li:first').addClass('active');
+//
+//     //대매뉴
+// 		$('.sitemap-list > li > a').click(function(){
+// 			$(this).attr('href','javascript:void(0);')
+// 		});
+//
+//   }else{
+//     // $('.sitemap-list > li:first').removeClass('active');
+//   }
+// });
+
+$(function() {
+	var $header = $("header"),
+    $sch_layer = $('.sch_layer');  
+	//search
+    $(".btn_sch_open").click(function () {
+        $header.addClass("active").find($sch_layer).stop().slideDown();
+    });
+    $(".btn_sch_close").click(function () {
+        $header.removeClass("active").find($sch_layer).hide();
+        $(".btn_sch_open").focus();
+    });
+
+
+/*
+  if ($(window).width()<767) {
+    $('.sitemap-wrap .container').append('<a href="#" class="m-close">닫기</a>');
+    $('.m-close').click(function(){
+      console.log('모바일닫기버튼');
+      $('.menu-trigger').removeClass('active');
+      $(this).parents('.sitemap-wrap').removeClass('active');
+    });    
+  }
+  */
+
+  /* 모바일 */
+  //연구개발 메뉴
+  function rnd(){
+	  //var url = window.location.pathname;
+    var url = $("html").attr("lang");
+    var $gnbText;
+    var $gnbList;
+	  if(url == "en"){
+		  $gnbText = $('#gnb>ul>li:nth-child(2)>a').text();
+		  $gnbList = $('#gnb>ul>li:nth-child(2) .depth2');
+	  }else{
+		  $gnbText = $('#gnb>ul>li:nth-child(3)>a').text();
+		  $gnbList = $('#gnb>ul>li:nth-child(3) .depth2');
+	  }	  
+    var $gnb3Title = $('<button type="button" class="rnd"><i class="xi-bars"></i>' + $gnbText + '</button>'),
+      $gnb3List = $gnbList.addClass('rnd-list').clone(); //연구개발
+    $('#gnb>ul').after('<div class="rnd-wrap"></div>');
+    $('.rnd-wrap').append($gnb3Title, $gnb3List);
+  }  
+  $(window).on("load",function(){
+    rnd();
+    //3차 메뉴가 있는경우
+    $(".depth3").each(function () {
+      $(this).parent().addClass("is-depth3");
+    });
+  });
+  
+   $("#nav").on("click", ".rnd", function () {     
+      $(this).toggleClass(ac);
+      $("#wrap").removeClass("allmenu-pop").toggleClass("rnd-pop");
+      $(".tsidemenu .menu-trigger").removeClass(ac);
+  });
+
+  //gnb
+  $("#gnb>ul>li").on("mouseenter focusin", function(){
+    $("#nav").addClass("active");
+  }).mouseleave(function(){
+    $("#nav").removeClass("active");
+  });
+  
+  $(".menu-trigger").on("focusin", function(){
+    $("#nav").removeClass("active");
+  })
+  
+$(".btn_sch_open").on("focusin", function(){
+    $("#nav").removeClass("active");
+  })
+  
+  
+  $("#header").on("mouseleave", function(){
+    //$("#nav > ul > li").removeClass('active');
+    $('.header-dimmed').css('display','none').css('opacity','0');
+    $('.bg_depth2').css('height', 0);
+  });
+  
+  //모바일 메뉴
+  //var $depth1 = $(".topmenu .depth1");
+  $("#gnb>ul>li>a").on("click", function () {
+    $(this).parent().addClass(ac).siblings().removeClass(ac);
+    if ($(window).width() < 991) {
+        return false
+    }
+  });
+  $("#nav").on("click", "#gnb .depth2>li.is-depth3>a", function () {
+    $(this).parent().toggleClass(ac).siblings().removeClass(ac);
+    if ($(window).width() < 991) {
+        return false
+    }
+  });
+
+  $('.tsidemenu a').on("click", function(){
+    $("#wrap").toggleClass("allmenu-pop").removeClass("rnd-pop");
+    $("#nav").removeClass("active");
+    $(".rnd").removeClass("active");
+  });
+
+  $('.lang button').click(function(){
+    $(this).toggleClass('active');
+    $(this).next().slideToggle();
+  });
+
+  $('.total-search').click(function(){
+    $(this).toggleClass('active');
+    $(this).next().toggleClass('active');
+  });
+
+  $('.family-site').click(function(){
+    $(this).toggleClass('active');
+    $(this).children('.depth-list').slideToggle();
+  });
+
+  $('.sitemap-list > li:last ul > li:last > a').focusout(function(){
+    $('.menu-trigger').focus();
+  });
+  
+  $('.menu-trigger').click(function(){
+    $(this).toggleClass('active')
+    $(this).next().toggleClass('active');
+  });
+  
+  $('.sitemap-list > li').click(function(){
+    console.log('하위뎁스 클릭시');
+    $(this).toggleClass('active').siblings().removeClass('active');
+  });
+
+  //서브메뉴
+  var $snbLi = $(".snb>li");  
+  var $snbActive = $(".snb>li.active>a");
+  //$snbActive.next().hide();
+  $snbActive.on("click", function() {
+    //$(this).next().show();
+    $snbLi.toggleClass("on");
+    event.preventDefault();
+  });		
+
+
+	// 2018.10.12 SY,CHo 기술소통 메인메뉴
+	$('.comm h2 a').on('click', function(event){
+		if($('.comm .depth-list').css("display") == "none"){$('.comm .depth-list').slideDown(100);}
+		else{$('.comm .depth-list').slideUp(100);}
+		event.preventDefault();
+	});
+
+	// 2018.10.29 SY,CHo hash 버튼
+	$('.hash-btn-close').on('click', function(event){
+		$(this.hash).slideUp(100);
+		event.preventDefault();
+	});
+});
