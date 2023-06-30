@@ -306,7 +306,7 @@ h5.title::after {content: ""; width: 6px; height: 6px; background-color: #e77a27
 .bookmark {width: 100%;}
 .bookmark>li.active {border-color: #e77a27;font-weight: 700;position: relative;z-index: 1;}
 .bookmark>li.active a {color: #e77a27;}
-.bookmark li {width: 274.5px; border: 1px solid #dde1e9; color: #333333; background-color: #fff; text-align: center; margin: 0 -1px; padding: 20px 10px; transition: .25s; font-size: 17px; float: left; box-sizing: border-box;}
+.bookmark li {display: block; width: 274.5px; border: 1px solid #dde1e9; color: #333333; background-color: #fff; text-align: center; margin: 0 -1px; padding: 20px 10px; transition: .25s; font-size: 17px; float: left; box-sizing: border-box;}
 .bookmark li>a{display: block;}
 .list.dash > li {
     padding-left: 15px;
