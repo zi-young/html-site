@@ -13,6 +13,7 @@ body{line-height: 1.25;}
 #footer{height: 160px;}
 
 
+
 /* header */
 #header .area1 {height: 92px; padding: 22px 0; box-sizing: border-box; position: relative;}
 #header .area1 > .logo {position: absolute; left: 50%; top: 25px; transform: translateX(-50%);}
