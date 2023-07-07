@@ -26,19 +26,11 @@ $( document ).ready( function() {
   document.querySelector(".menu-btn").addEventListener('click', show);
   document.querySelector(".tsidemenu").addEventListener('click', close);
   
-  // footer메뉴
-  $(document).ready(function(){
-	
-	$('.button').off('click').on('click', function(){
-	  $(this).next($('.hide')).slideToggle('fast');
-	  $('.family-site').toggleClass('active');
-	})
-  })  
   
-  
-  
-  
-  
+
+
+
+  // 슬라이드
   const banner=$('.img-box a');
   const button=$('.slick-active > button');
   let cnt=0;
@@ -90,9 +82,7 @@ $( document ).ready( function() {
   
   
   
-  
-  
-  
+//   슬라이드 정지 버튼
   function move(tg, start, end){
 	  tg.css('left', start).stop().animate({left: end},500)
   }
@@ -119,3 +109,16 @@ $( document ).ready( function() {
 			  a=true;
 		  }
   })
+
+
+
+  // footer메뉴
+  $(document).ready(function(){
+	
+	$('.button').off('click').on('click', function(){
+	  $(this).next($('.hide')).slideToggle('fast');
+	  $('.family-site').toggleClass('active');
+	})
+  })  
+
+

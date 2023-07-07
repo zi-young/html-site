@@ -42,6 +42,9 @@ body{line-height: 1.25;}
 #header .nav .gnb > ul > li > ul > li{padding-top: 5px;}
 #header .nav .gnb > ul:hover > li > ul{height: 409px;}
 #header .nav .gnb > ul > li > ul > li:hover > a{color: #fdb913;}
+
+
+
 #header .nav .gnb > ul > li:last-child > ul{border-right: 1px solid #0c0c0c;}
 #header .nav .gnb > ul > li > ul li a{font-size: 16px; padding: 6px 7px; display: block; font-weight: 500; color: #bfc6d1;}
 
