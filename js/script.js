@@ -145,4 +145,13 @@ $( document ).ready( function() {
 		  }
 		});
 
-    
+    // 모더나이저
+
+    if(Modernizr.svg){
+        console.log("svg를 지원합니다.");
+    }
+        
+    if(Modernizr.canvas){
+        console.log("canvas를 지원합니다.");
+    }
+   

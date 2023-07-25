@@ -114,11 +114,30 @@ $( document ).ready( function() {
 
   // footer메뉴
   $(document).ready(function(){
-	
 	$('.button').off('click').on('click', function(){
 	  $(this).next($('.hide')).slideToggle('fast');
-	  $('.family-site').toggleClass('active');
+	  $('.go-top').toggleClass('active');
 	})
   })  
 
 
+  
+
+
+//   go-top버튼
+//   $(function() {
+// 	$(window).scroll(function() {
+// 		if ($(this).scrollTop() > 500) {
+// 			$('.go-top').fadeIn();
+// 		} else {
+// 			$('.go-top').fadeOut();
+// 		}
+// 	});
+	
+// 	$(".go-top").click(function() {
+// 		$('html, body').animate({
+// 			scrollTop : 0
+// 		}, 400);
+// 		return false;
+// 	});
+// });
